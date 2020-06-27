@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">Contacts</string>
+    <string name="cab_title">Material CAB</string>
+
+    <string name="authToken">administrator</string>
+
+    <string name="edtNameHint">Name</string>
+    <string name="edtNumberHint">Phone Number</string>
+    <string name="edtAddressHint">Address</string>
+
+    <string name="btnEditText">Edit</string>
+    <string name="btnInsertText">Insert</string>
+
+    <string name="tvNothingToShowText">Nothing To Show</string>
+    <string name="searchViewHint">Search Contact</string>
+
+    <string name="tvProfilePhotoText">Profile Photo</string>
+    <string name="tvRemovePhotoText">Remove \nPhoto</string>
+    <string name="tvGalleryText">Gallery</string>
+    <string name="tvCameraText">Camera</string>
+
+    <string name="tvConnectionErrorText">Oops, Connection Error</string>
+    <string name="btnRetryText">RETRY</string>
+</resources>

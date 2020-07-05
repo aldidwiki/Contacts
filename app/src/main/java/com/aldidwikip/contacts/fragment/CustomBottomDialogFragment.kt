@@ -70,7 +70,6 @@ class CustomBottomDialogFragment : BottomSheetDialogFragment(), View.OnClickList
     }
 
     companion object {
-        fun newInstance() =
-                CustomBottomDialogFragment()
+        fun newInstance() = CustomBottomDialogFragment()
     }
 }

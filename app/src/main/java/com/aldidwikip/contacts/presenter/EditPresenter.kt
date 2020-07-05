@@ -33,10 +33,7 @@ class EditPresenter(val context: Context, val view: EditView) {
                 view.hideLoadingAnimation()
             }
 
-            override fun onResponse(
-                    call: Call<CRUDContactModel>,
-                    response: Response<CRUDContactModel>
-            ) {
+            override fun onResponse(call: Call<CRUDContactModel>, response: Response<CRUDContactModel>) {
                 d(TAG, "onResponse Upload: true")
                 view.hideLoadingAnimation()
                 view.isUploaded()
@@ -60,6 +57,7 @@ class EditPresenter(val context: Context, val view: EditView) {
                 avatar.substring(avatar.lastIndexOf("/") + 1)
             }
         }
+
         val contactCall = apiService.updateContacts(id, name, number, address, strAvatar)
         contactCall.enqueue(object : Callback<CRUDContactModel> {
             override fun onFailure(call: Call<CRUDContactModel>, t: Throwable) {
@@ -68,14 +66,9 @@ class EditPresenter(val context: Context, val view: EditView) {
                 mediaPath ?: view.hideLoadingAnimation()
             }
 
-            override fun onResponse(
-                    call: Call<CRUDContactModel>,
-                    response: Response<CRUDContactModel>
-            ) {
+            override fun onResponse(call: Call<CRUDContactModel>, response: Response<CRUDContactModel>) {
                 d(TAG, "onResponse Edit: ${response.body()?.status}")
-                Toast.makeText(
-                        context, response.body()?.message, Toast.LENGTH_SHORT
-                ).show()
+                Toast.makeText(context, response.body()?.message, Toast.LENGTH_SHORT).show()
                 mediaPath ?: run {
                     view.hideLoadingAnimation()
                     view.isUpdated()
@@ -92,9 +85,7 @@ class EditPresenter(val context: Context, val view: EditView) {
                 Toast.makeText(context, "Failed to Delete", Toast.LENGTH_SHORT).show()
             }
 
-            override fun onResponse(
-                    call: Call<CRUDContactModel>, response: Response<CRUDContactModel>
-            ) {
+            override fun onResponse(call: Call<CRUDContactModel>, response: Response<CRUDContactModel>) {
                 d(TAG, "onResponse Delete: ${response.body()?.status}")
                 Toast.makeText(context, response.body()?.message, Toast.LENGTH_SHORT).show()
                 view.isUpdated()

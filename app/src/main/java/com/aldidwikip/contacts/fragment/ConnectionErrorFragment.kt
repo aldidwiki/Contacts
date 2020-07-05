@@ -14,9 +14,9 @@ import kotlinx.android.synthetic.main.connection_error.*
 class ConnectionErrorFragment(private val mPresenter: MainPresenter) : Fragment() {
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
+            inflater: LayoutInflater,
+            container: ViewGroup?,
+            savedInstanceState: Bundle?
     ): View? {
         return inflater.inflate(R.layout.connection_error, container, false)
     }

@@ -3,6 +3,7 @@ package com.aldidwikip.contacts.service
 import com.aldidwikip.contacts.model.CRUDContactModel
 import com.aldidwikip.contacts.model.ContactModel
 import com.aldidwikip.contacts.utils.Constant
+import com.google.gson.GsonBuilder
 import okhttp3.Interceptor
 import okhttp3.MultipartBody
 import okhttp3.OkHttpClient

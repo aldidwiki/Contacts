@@ -5,7 +5,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
 import android.view.MenuItem
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.aldidwikip.contacts.R
 import com.aldidwikip.contacts.fragment.CustomBottomDialogFragment
@@ -16,10 +15,9 @@ import com.bumptech.glide.request.RequestOptions
 import com.github.dhaval2404.imagepicker.ImagePicker
 import com.google.android.material.textfield.TextInputEditText
 import kotlinx.android.synthetic.main.activity_insert.*
-import kotlinx.android.synthetic.main.spin_kit_loading.*
 
 class InsertActivity : AppCompatActivity(), InsertView,
-    CustomBottomDialogFragment.ItemClickListener {
+        CustomBottomDialogFragment.ItemClickListener {
 
     private val presenter = InsertPresenter(this, this)
     private var mediaPath: String? = null
@@ -51,12 +49,12 @@ class InsertActivity : AppCompatActivity(), InsertView,
             mediaPath = ImagePicker.getFilePath(data)
 
             val requestOption = RequestOptions()
-                .placeholder(R.drawable.ic_baseline_person_24)
-                .error(R.drawable.ic_baseline_person_24)
+                    .placeholder(R.drawable.ic_baseline_person_24)
+                    .error(R.drawable.ic_baseline_person_24)
             Glide.with(this)
-                .applyDefaultRequestOptions(requestOption)
-                .load(mediaPath)
-                .into(profileImage)
+                    .applyDefaultRequestOptions(requestOption)
+                    .load(mediaPath)
+                    .into(profileImage)
         }
     }
 
@@ -81,27 +79,29 @@ class InsertActivity : AppCompatActivity(), InsertView,
             TextUtils.isEmpty(number) -> edtNumber.setErrorMessage()
             TextUtils.isEmpty(address) -> edtAddress.setErrorMessage()
             else -> presenter.insertContact(name, number, address, mediaPath)
-
         }
     }
 
     override fun isInserted() {
-        val returnIntent = Intent()
-        returnIntent.putExtra("hasBackPressed", false)
+        val returnIntent = Intent().apply {
+            putExtra("hasBackPressed", false)
+        }
         setResult(Activity.RESULT_OK, returnIntent)
         finish()
     }
 
     override fun isUploaded() {
-        val returnIntent = Intent()
-        returnIntent.putExtra("hasBackPressed", false)
+        val returnIntent = Intent().apply {
+            putExtra("hasBackPressed", false)
+        }
         setResult(Activity.RESULT_OK, returnIntent)
         finish()
     }
 
     override fun onBackPressed() {
-        val returnIntent = Intent()
-        returnIntent.putExtra("hasBackPressed", true)
+        val returnIntent = Intent().apply {
+            putExtra("hasBackPressed", true)
+        }
         setResult(Activity.RESULT_OK, returnIntent)
         finish()
     }

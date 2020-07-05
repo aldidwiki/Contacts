@@ -42,17 +42,12 @@ class MainPresenter(val context: Context, val view: MainView) {
         contactCall.enqueue(object : Callback<CRUDContactModel> {
             override fun onFailure(call: Call<CRUDContactModel>, t: Throwable) {
                 d(TAG, "onFailure Delete: ${t.message}")
-                Toast.makeText(context, "Failed to Delete", Toast.LENGTH_SHORT)
-                        .show()
+                Toast.makeText(context, "Failed to Delete", Toast.LENGTH_SHORT).show()
             }
 
-            override fun onResponse(
-                    call: Call<CRUDContactModel>,
-                    response: Response<CRUDContactModel>
-            ) {
+            override fun onResponse(call: Call<CRUDContactModel>, response: Response<CRUDContactModel>) {
                 d(TAG, "onResponse Delete: ${response.body()?.status}")
-                Toast.makeText(context, response.body()?.message, Toast.LENGTH_SHORT)
-                        .show()
+                Toast.makeText(context, response.body()?.message, Toast.LENGTH_SHORT).show()
                 view.onContactDeleted()
             }
         })

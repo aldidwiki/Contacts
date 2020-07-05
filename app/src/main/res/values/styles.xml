@@ -14,6 +14,6 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="md_corner_radius">15dp</item>
-        <item name="titleTextColor">#FFF</item>
+        <item name="titleTextColor">@color/white</item>
     </style>
 </resources>

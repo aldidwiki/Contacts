@@ -11,11 +11,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.aldidwikip.contacts.R
 import com.aldidwikip.contacts.adapter.ContactAdapter
+import com.aldidwikip.contacts.fragment.ConnectionErrorFragment
+import com.aldidwikip.contacts.fragment.CustomDialogFragment
 import com.aldidwikip.contacts.listener.ContactListener
 import com.aldidwikip.contacts.model.DataContactModel
 import com.aldidwikip.contacts.presenter.MainPresenter
-import com.aldidwikip.contacts.fragment.ConnectionErrorFragment
-import com.aldidwikip.contacts.fragment.CustomDialogFragment
 import com.aldidwikip.contacts.view.MainView
 import com.faltenreich.skeletonlayout.Skeleton
 import com.faltenreich.skeletonlayout.applySkeleton
@@ -103,9 +103,9 @@ class MainActivity : AppCompatActivity(), ContactListener, MainView {
     }
 
     override fun onDestroy() {
-        super.onDestroy()
         val myID = android.os.Process.myPid()
         android.os.Process.killProcess(myID)
+        super.onDestroy()
     }
 
     override fun onResume() {
@@ -119,8 +119,7 @@ class MainActivity : AppCompatActivity(), ContactListener, MainView {
     }
 
     private fun iniSkeleton() {
-        skeleton =
-            recyclerView.applySkeleton(R.layout.contact_list, 10, shimmerDurationInMillis = 1000L)
+        skeleton = recyclerView.applySkeleton(R.layout.contact_list, 10, shimmerDurationInMillis = 1000L)
     }
 
     private fun initRecyclerView() {
@@ -145,13 +144,13 @@ class MainActivity : AppCompatActivity(), ContactListener, MainView {
             presenter.deleteContact(dataContact.id)
         } else {
             val intentToEdit = Intent(this, EditActivity::class.java)
-                .apply {
-                    putExtra("ID", dataContact.id)
-                    putExtra("Name", dataContact.nama)
-                    putExtra("Number", dataContact.nomor)
-                    putExtra("Address", dataContact.alamat)
-                    putExtra("ProfilePic", dataContact.avatar)
-                }
+                    .apply {
+                        putExtra("ID", dataContact.id)
+                        putExtra("Name", dataContact.nama)
+                        putExtra("Number", dataContact.nomor)
+                        putExtra("Address", dataContact.alamat)
+                        putExtra("ProfilePic", dataContact.avatar)
+                    }
             startActivityForResult(intentToEdit, INTENT_TO_EDIT)
         }
     }
@@ -159,8 +158,10 @@ class MainActivity : AppCompatActivity(), ContactListener, MainView {
     override fun onAvatarClicked(dataContact: DataContactModel) {
         val dialogFragment = CustomDialogFragment.newInstance(dataContact)
         val ft = supportFragmentManager.beginTransaction()
-        dialogFragment.intentToEdit(this, dataContact)
-        dialogFragment.show(ft, "CUSTOM DIALOG")
+        with(dialogFragment) {
+            intentToEdit(this@MainActivity, dataContact)
+            show(ft, "CUSTOM DIALOG")
+        }
     }
 
     override fun onContactsLoaded(dataContactModel: List<DataContactModel>) {
@@ -181,9 +182,8 @@ class MainActivity : AppCompatActivity(), ContactListener, MainView {
 
     override fun showConnectionError() {
         supportFragmentManager.beginTransaction()
-            .replace(R.id.fragment_container,
-                ConnectionErrorFragment(presenter), "CONNECTION ERROR")
-            .commit()
+                .replace(R.id.fragment_container, ConnectionErrorFragment(presenter), "CONNECTION ERROR")
+                .commit()
         fabInsert.visibility = View.INVISIBLE
         appBarLayout.visibility = View.GONE
         swipeRefresh.isEnabled = false

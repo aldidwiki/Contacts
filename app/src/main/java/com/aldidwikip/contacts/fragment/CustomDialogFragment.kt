@@ -24,7 +24,11 @@ class CustomDialogFragment : DialogFragment(), View.OnClickListener {
         this.dataContact = dataContact
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+            inflater: LayoutInflater,
+            container: ViewGroup?,
+            savedInstanceState: Bundle?
+    ): View? {
         val view = inflater.inflate(R.layout.custom_dialog_fragment, container, false)
         dialog?.window?.setBackgroundDrawableResource(R.drawable.rounded_bg)
         return view
@@ -71,14 +75,14 @@ class CustomDialogFragment : DialogFragment(), View.OnClickListener {
 
     companion object {
         fun newInstance(dataContact: DataContactModel): CustomDialogFragment {
-            val args = Bundle()
-            val fragment =
-                    CustomDialogFragment()
-            args.putString("contactID", dataContact.id)
-            args.putString("contactName", dataContact.nama)
-            args.putString("contactNumber", dataContact.nomor)
-            args.putString("contactAddress", dataContact.alamat)
-            args.putString("contactAvatar", dataContact.avatar)
+            val fragment = CustomDialogFragment()
+            val args = Bundle().apply {
+                putString("contactID", dataContact.id)
+                putString("contactName", dataContact.nama)
+                putString("contactNumber", dataContact.nomor)
+                putString("contactAddress", dataContact.alamat)
+                putString("contactAvatar", dataContact.avatar)
+            }
 
             fragment.arguments = args
             return fragment

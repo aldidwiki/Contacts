@@ -1,24 +1,27 @@
 <resources>
     <string name="app_name">Contacts</string>
-    <string name="cab_title">Material CAB</string>
 
-    <string name="authToken">administrator</string>
+    <string name="auth_token">administrator</string>
 
-    <string name="edtNameHint">Name</string>
-    <string name="edtNumberHint">Phone Number</string>
-    <string name="edtAddressHint">Address</string>
+    <string name="edt_name_hint">Name</string>
+    <string name="edt_number_hint">Phone Number</string>
+    <string name="edt_address_hint">Address</string>
 
-    <string name="btnEditText">Edit</string>
-    <string name="btnInsertText">Insert</string>
+    <string name="btn_edit_text">Edit</string>
+    <string name="btn_insert_text">Insert</string>
 
-    <string name="tvNothingToShowText">Nothing To Show</string>
-    <string name="searchViewHint">Search Contact</string>
+    <string name="tv_nothing_to_show_text">Nothing To Show</string>
+    <string name="search_view_hint">Search Contact</string>
 
-    <string name="tvProfilePhotoText">Profile Photo</string>
-    <string name="tvRemovePhotoText">Remove \nPhoto</string>
-    <string name="tvGalleryText">Gallery</string>
-    <string name="tvCameraText">Camera</string>
+    <string name="tv_profile_photo_text">Profile Photo</string>
+    <string name="tv_remove_photo_text">Remove \nPhoto</string>
+    <string name="tv_gallery_text">Gallery</string>
+    <string name="tv_camera_text">Camera</string>
 
-    <string name="tvConnectionErrorText">Oops, Connection Error</string>
-    <string name="btnRetryText">RETRY</string>
+    <string name="tv_connection_error_text">Oops, Connection Error</string>
+    <string name="btn_retry_text">RETRY</string>
+
+    <string name="icon_delete_title">Delete</string>
+    <string name="icon_insert_title">Insert</string>
+    <string name="icon_search_title">Search</string>
 </resources>

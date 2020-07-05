@@ -44,12 +44,12 @@ class EditActivity : AppCompatActivity(), EditView, CustomBottomDialogFragment.I
         edtNumber.setText(number)
         edtAddress.setText(address)
         val requestOptions = RequestOptions()
-            .placeholder(R.drawable.ic_baseline_person_24)
-            .error(R.drawable.ic_baseline_person_24)
+                .placeholder(R.drawable.ic_baseline_person_24)
+                .error(R.drawable.ic_baseline_person_24)
         Glide.with(this)
-            .applyDefaultRequestOptions(requestOptions)
-            .load(avatar)
-            .into(profileImage)
+                .applyDefaultRequestOptions(requestOptions)
+                .load(avatar)
+                .into(profileImage)
 
         profileImage.setOnClickListener {
             val bottomDialog = CustomBottomDialogFragment.newInstance()
@@ -72,12 +72,12 @@ class EditActivity : AppCompatActivity(), EditView, CustomBottomDialogFragment.I
         if (resultCode == Activity.RESULT_OK) {
             mediaPath = ImagePicker.getFilePath(data)
             val requestOption = RequestOptions()
-                .placeholder(R.drawable.ic_baseline_person_24)
-                .error(R.drawable.ic_baseline_person_24)
+                    .placeholder(R.drawable.ic_baseline_person_24)
+                    .error(R.drawable.ic_baseline_person_24)
             Glide.with(this)
-                .applyDefaultRequestOptions(requestOption)
-                .load(mediaPath)
-                .into(profileImage)
+                    .applyDefaultRequestOptions(requestOption)
+                    .load(mediaPath)
+                    .into(profileImage)
         }
     }
 
@@ -117,29 +117,30 @@ class EditActivity : AppCompatActivity(), EditView, CustomBottomDialogFragment.I
             TextUtils.isEmpty(name) -> edtName.setErrorMessage()
             TextUtils.isEmpty(number) -> edtNumber.setErrorMessage()
             TextUtils.isEmpty(address) -> edtAddress.setErrorMessage()
-            else -> {
-                presenter.updateContacts(id, name, number, address, avatar, mediaPath, imageRemoved)
-            }
+            else -> presenter.updateContacts(id, name, number, address, avatar, mediaPath, imageRemoved)
         }
     }
 
     override fun isUpdated() {
-        val returnIntent = Intent()
-        returnIntent.putExtra("hasBackPressed", false)
+        val returnIntent = Intent().apply {
+            putExtra("hasBackPressed", false)
+        }
         setResult(Activity.RESULT_OK, returnIntent)
         finish()
     }
 
     override fun isUploaded() {
-        val returnIntent = Intent()
-        returnIntent.putExtra("hasBackPressed", false)
+        val returnIntent = Intent().apply {
+            putExtra("hasBackPressed", false)
+        }
         setResult(Activity.RESULT_OK, returnIntent)
         finish()
     }
 
     override fun onBackPressed() {
-        val returnIntent = Intent()
-        returnIntent.putExtra("hasBackPressed", true)
+        val returnIntent = Intent().apply {
+            putExtra("hasBackPressed", true)
+        }
         setResult(Activity.RESULT_OK, returnIntent)
         finish()
     }

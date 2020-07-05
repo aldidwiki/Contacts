@@ -16,8 +16,7 @@ import kotlinx.android.synthetic.main.contact_list.view.*
 class ContactAdapter(
         private val mDataContact: List<DataContactModel>,
         private val listener: ContactListener
-) :
-        RecyclerView.Adapter<ContactAdapter.ContactViewHolder>() {
+) : RecyclerView.Adapter<ContactAdapter.ContactViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ContactViewHolder {
         return ContactViewHolder(
@@ -41,7 +40,7 @@ class ContactAdapter(
 
     override fun getItemCount() = mDataContact.size
 
-    class ContactViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class ContactViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val mName = itemView.tvName
         private val mNumber = itemView.tvNumber
         private val mAddress = itemView.tvAddress
@@ -56,7 +55,6 @@ class ContactAdapter(
             val requestOption = RequestOptions()
                     .placeholder(R.drawable.ic_baseline_person_24)
                     .error(R.drawable.ic_baseline_person_24)
-
             Glide.with(itemView)
                     .applyDefaultRequestOptions(requestOption)
                     .load(dataContact.avatar)
